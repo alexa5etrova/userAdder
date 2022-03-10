@@ -9,7 +9,7 @@ function App() {
   let onUserEntered = (name, age) => {
     setEnteredUsers((prev) => [
       ...prev,
-      { key: Math.floor(Math.random()) * 1000, userName: name, age: age },
+      { id: Math.floor(Math.random()) * 1000, userName: name, age: age },
     ]);
   };
 
