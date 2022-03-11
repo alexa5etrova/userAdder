@@ -14,10 +14,10 @@ function App() {
   };
 
   return (
-    <div>
+    <>
       <AddUser onUserEntered={onUserEntered} />
       <UserList users={enteredUsers} />
-    </div>
+    </>
   );
 }
 
