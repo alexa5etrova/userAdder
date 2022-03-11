@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Wrapper from "../Helpers/Wrapper";
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import Modal from "../UI/Modal";
@@ -18,16 +19,18 @@ const AddUser = (props) => {
     if (userName.trim().length === 0 || enteredAge.trim().length === 0) {
       setErrorState({
         isModalOpen: true,
-        headerError: "No full data",
-        contentError: "Please eneter your name and age",
+        headerError: "Invalid input",
+        contentError: "Please enter your name and age()",
       });
+      return;
     }
     if (+enteredAge < 1) {
       setErrorState({
         isModalOpen: true,
-        headerError: "Age mistake",
-        contentError: "Age should be more than 1y.o",
+        headerError: "Invalid Age",
+        contentError: "Please enter your age(more than 0 y.o.)",
       });
+      return;
     }
     console.log(userName, enteredAge);
     props.onUserEntered(userName, enteredAge);
@@ -48,8 +51,7 @@ const AddUser = (props) => {
   };
 
   return (
-    <div>
-      {" "}
+    <Wrapper>
       {errorState.isModalOpen && (
         <Modal
           header={errorState.headerError}
@@ -79,7 +81,7 @@ const AddUser = (props) => {
           <Button type="submit">Add user</Button>
         </form>
       </Card>
-    </div>
+    </Wrapper>
   );
 };
 
